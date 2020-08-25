@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.yaroshevich.catchcollector.R
 
-class TrophyFragment: Fragment() {
+class TrophyFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater,

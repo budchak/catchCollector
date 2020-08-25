@@ -32,28 +32,28 @@ class DatabaseInitData(val database: TrophyDatabase) {
                 CountryEntity(
                     id = 1,
                     name = "Беларусь",
-                    iconName = "/images/country/belarus_icon.jpg"
+                    iconName = "/images/country/title_country_belarus.png"
                 )
             )
             add(
                 CountryEntity(
                     id = 2,
                     name = "Россия",
-                    iconName = "/images/country/belarus_icon.jpg"
+                    iconName = "/images/country/title_country_russia.png"
                 )
             )
             add(
                 CountryEntity(
                     id = 3,
                     name = "Украина",
-                    iconName = "/images/country/belarus_icon.jpg"
+                    iconName = "/images/country/title_country_ukraine.png"
                 )
             )
             add(
                 CountryEntity(
                     id = 4,
                     name = "Польша",
-                    iconName = "/images/country/belarus_icon.jpg"
+                    iconName = "/images/country/title_country_belarus.png"
                 )
             )
         }

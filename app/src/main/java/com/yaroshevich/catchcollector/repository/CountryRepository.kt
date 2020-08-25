@@ -1,21 +1,54 @@
 package com.yaroshevich.catchcollector.repository
 
+import android.util.Log
 import com.yaroshevich.catchcollector.App
 import com.yaroshevich.catchcollector.model.Country
+import com.yaroshevich.catchcollector.room.entities.CountryEntity
 
 class CountryRepository {
 
+    private val countryDao = App.getInstance().database.countryDao()
 
     suspend fun getAll(): List<Country> {
-        val a = App.getInstance().database.countryDao().getAll()
-        val list = mutableListOf<Country>()
+        val countryEntityList = countryDao.getAll()
+        val countryModelList = mutableListOf<Country>()
 
-        a.forEach {
-            var country = Country(id = it.id,name = it.name, iconPath = it.iconName)
-            list.add(country)
+        countryEntityList.forEach {
+            var country = Country(id = it.id, name = it.name, iconPath = it.iconName)
+            countryModelList.add(country)
         }
 
-        return list
+        return countryModelList
     }
 
+    suspend fun search(request: String): List<Country> {
+
+        val requestResult = countryDao.search(request)
+        requestResult.forEach {
+            Log.e("Result", "${it.id} + ${it.name}")
+        }
+        return map(requestResult)
+    }
+
+
+    private fun map(entity: CountryEntity): Country {
+
+        return Country(id = entity.id, name = entity.name, iconPath = entity.iconName)
+
+    }
+
+    fun map(entities: List<CountryEntity>): List<Country> {
+
+        val result = mutableListOf<Country>()
+
+        entities.forEach {
+
+            result.add(map(it))
+
+            Log.e("ResultCountry", "${it.id} + ${it.name}")
+
+        }
+
+        return result
+    }
 }

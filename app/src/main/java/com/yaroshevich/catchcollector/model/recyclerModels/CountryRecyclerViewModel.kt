@@ -21,10 +21,11 @@ class CountryRecyclerViewModel(var context: Context, var itemClickListener: Item
 
     private var liveCountry = MutableLiveData<List<Country>>()
 
+    private val spanCount = 3
 
     override var adapter: RecyclerView.Adapter<out RecyclerView.ViewHolder> = createAdapter()
 
-    override var layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, 3, RecyclerView.VERTICAL, false)
+    override var layoutManager: RecyclerView.LayoutManager = GridLayoutManager(context, spanCount, RecyclerView.VERTICAL, false)
 
     override var itemDecorator: RecyclerView.ItemDecoration = GridLayoutDecorator()
 

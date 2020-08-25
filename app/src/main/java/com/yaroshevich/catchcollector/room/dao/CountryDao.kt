@@ -23,4 +23,8 @@ interface CountryDao {
 
     @Delete
     fun delete(countryEntity: CountryEntity)
+
+
+    @Query("SELECT * FROM country WHERE name LIKE '%' || :request || '%'")
+    suspend fun search(request: String): List<CountryEntity>
 }
