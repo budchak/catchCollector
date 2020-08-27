@@ -2,13 +2,9 @@ package com.yaroshevich.catchcollector
 
 import android.app.Application
 import com.yaroshevich.catchcollector.di.components.*
-import com.yaroshevich.catchcollector.di.modules.AppModule
-import com.yaroshevich.catchcollector.di.modules.CountryFragmentModule
-import com.yaroshevich.catchcollector.di.modules.FishFragmentModule
-import com.yaroshevich.catchcollector.di.modules.NavigationActivityModule
+import com.yaroshevich.catchcollector.di.modules.*
 import com.yaroshevich.catchcollector.model.DatabaseInitData
 import com.yaroshevich.catchcollector.room.TrophyDatabase
-import dagger.Component
 import javax.inject.Inject
 
 class App : Application() {
@@ -19,13 +15,15 @@ class App : Application() {
     @Inject
     lateinit var database: TrophyDatabase
 
-    lateinit var appComponent: AppComponent
+    private lateinit var appComponent: AppComponent
 
-    lateinit var navigationActivityComponent: NavigationActivityComponent
+    private lateinit var navigationActivityComponent: NavigationActivityComponent
 
-    lateinit var countryFragmentComponent: CountryFragmentComponent
+    private lateinit var countryFragmentComponent: CountryFragmentComponent
 
-    lateinit var fishFragmentComponent: FishFragmentComponent
+    private lateinit var fishFragmentComponent: FishFragmentComponent
+
+    private lateinit var trophyComponent: TrophyComponent
 
     override fun onCreate() {
         super.onCreate()
@@ -36,13 +34,14 @@ class App : Application() {
     }
 
 
-    fun initNavigationActivityComponent(navigationActivity: NavigationActivity): NavigationActivityComponent{
-        navigationActivityComponent = appComponent.plus(NavigationActivityModule(navigationActivity))
+    fun initNavigationActivityComponent(navigationActivity: NavigationActivity): NavigationActivityComponent {
+        navigationActivityComponent =
+            appComponent.plus(NavigationActivityModule(navigationActivity))
 
         return navigationActivityComponent
     }
 
-    fun initCountryFragmentComponent(): CountryFragmentComponent{
+    fun initCountryFragmentComponent(): CountryFragmentComponent {
         countryFragmentComponent = navigationActivityComponent.plus(CountryFragmentModule())
         return countryFragmentComponent
     }
@@ -50,6 +49,11 @@ class App : Application() {
     fun initFishFragmentComponent(): FishFragmentComponent {
         fishFragmentComponent = navigationActivityComponent.plus(FishFragmentModule())
         return fishFragmentComponent
+    }
+
+    fun initTrophyComponent(): TrophyComponent {
+        trophyComponent = navigationActivityComponent.plus(TrophyModule())
+        return trophyComponent
     }
 
     companion object {

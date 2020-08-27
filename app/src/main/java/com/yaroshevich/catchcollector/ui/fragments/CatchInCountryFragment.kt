@@ -14,7 +14,7 @@ class CatchInCountryFragment: RecyclerViewFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        countryViewModel = CountryViewModel(requireContext(), findNavController())
+       // countryViewModel = CountryViewModel(requireContext(), findNavController())
 
         binding?.setVariable(BR.recyclerViewModel, countryViewModel.getRecyclerModel())
 

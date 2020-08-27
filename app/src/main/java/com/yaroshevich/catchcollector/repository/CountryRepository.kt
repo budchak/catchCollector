@@ -21,6 +21,17 @@ class CountryRepository {
         return countryModelList
     }
 
+
+    suspend fun getBy(id: Int): Country? {
+        val country = countryDao.getById(id)
+
+        return when (country) {
+            null -> null
+            else -> map(country)
+        }
+
+    }
+
     suspend fun search(request: String): List<Country> {
 
         val requestResult = countryDao.search(request)

@@ -13,7 +13,8 @@ import com.yaroshevich.catchcollector.model.recyclerModels.CountryRecyclerViewMo
 
 class CountryViewModel(
     var context: Context,
-    var navController: NavController
+    var navController: NavController,
+    var toolbarSettingViewModel: ToolbarSettingViewModel
 ) : ViewModel, ItemClickListener {
 
 
@@ -21,6 +22,7 @@ class CountryViewModel(
 
 
     fun getRecyclerModel() = recyclerViewModel
+
 
     override fun onClick(id: Int) {
 

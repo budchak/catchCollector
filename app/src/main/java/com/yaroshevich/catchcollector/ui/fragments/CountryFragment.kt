@@ -5,6 +5,7 @@ import android.view.View
 import androidx.navigation.fragment.findNavController
 import com.yaroshevich.catchcollector.App
 import com.yaroshevich.catchcollector.BR
+import com.yaroshevich.catchcollector.NavigationActivity
 import com.yaroshevich.catchcollector.viewModels.CountryViewModel
 import javax.inject.Inject
 
@@ -21,5 +22,11 @@ class CountryFragment : RecyclerViewFragment(){
         binding?.setVariable(BR.recyclerViewModel, countryViewModel.getRecyclerModel())
 
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        (activity as NavigationActivity).setToolbarTitle("My trophy")
     }
 }
