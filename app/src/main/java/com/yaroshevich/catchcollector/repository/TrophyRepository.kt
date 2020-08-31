@@ -20,6 +20,15 @@ class TrophyRepository {
         return list
     }
 
+
+    suspend fun isContainTrophy(fishId: Int, countryId: Int): Boolean{
+
+        return when(trophyDao.getBest(fishId, countryId)){
+            null -> false
+            else -> true
+        }
+    }
+
     suspend fun getBestTrophyBy(fishId: Int): Trophy? {
         val result = trophyDao.getBest(fishId)
         if (result != null) {

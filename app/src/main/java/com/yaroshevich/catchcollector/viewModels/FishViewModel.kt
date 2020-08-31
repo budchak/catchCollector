@@ -2,8 +2,8 @@ package com.yaroshevich.catchcollector.viewModels
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import com.yaroshevich.catchcollector.R
 import com.yaroshevich.catchcollector.interfaces.ItemClickListener
@@ -15,10 +15,13 @@ import com.yaroshevich.catchcollector.repository.CountryRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class FishViewModel(context: Context, var navController: NavController, var toolbarSettingViewModel: ToolbarSettingViewModel) : ViewModel,
+class FishViewModel(
+    context: Context,
+    var navController: NavController,
+    var trophyParameterViewModel: TrophyParameterViewModel,
+    var toolbarSettingViewModel: ToolbarSettingViewModel
+) : ViewModel,
     ItemClickListener {
-
-
 
 
     val trophy = MutableLiveData<List<Fish>>()
@@ -28,26 +31,35 @@ class FishViewModel(context: Context, var navController: NavController, var tool
     val recyclerViewModel = FishRecyclerViewModel(context, trophy, this)
 
 
-
-
     init {
-        country.observeForever{
+        country.observeForever {
             toolbarSettingViewModel.toolbarTitle.postValue(it?.name)
         }
     }
 
-    fun initFishListWith(countryID: Int) {
-        GlobalScope.launch {
+    fun initFishList() {
 
-            loadCountry(countryID)
-            loadTrophy(countryID)
+        val countryID = trophyParameterViewModel.countryId.value
 
+        if (countryID != null) {
+
+            GlobalScope.launch {
+
+                loadCountry(countryID)
+
+                loadTrophy(countryID)
+
+            }
+
+        }else{
+            Log.e(this.javaClass.simpleName, "ID not found")
         }
 
     }
 
     suspend fun loadCountry(countryID: Int) {
-        val result =  CountryRepository().getBy(countryID)
+
+        val result = CountryRepository().getBy(countryID)
 
         country.postValue(result)
     }
@@ -66,7 +78,7 @@ class FishViewModel(context: Context, var navController: NavController, var tool
 
         bundle.putInt(CountryViewModel.COUNTY_TAG, id)
 
-        navController.navigate(R.id.trophyFragment, bundle)
+        navController.navigate(R.id.trophyDescriptionFragment, bundle)
 
     }
 }

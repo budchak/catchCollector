@@ -5,8 +5,10 @@ import com.yaroshevich.catchcollector.di.modules.CountryFragmentModule
 import com.yaroshevich.catchcollector.di.modules.FishFragmentModule
 import com.yaroshevich.catchcollector.di.modules.NavigationActivityModule
 import com.yaroshevich.catchcollector.di.modules.TrophyModule
+import com.yaroshevich.catchcollector.di.spore.ActivitySpore
 import dagger.Subcomponent
 
+@ActivitySpore
 @Subcomponent(modules = [NavigationActivityModule::class])
 interface NavigationActivityComponent {
 

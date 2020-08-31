@@ -63,11 +63,16 @@ class NavigationActivity : AppCompatActivity() {
 
     }
 
+    fun changeToolbarVisibility(visibility: Int){
+        toolbar.visibility = visibility
+    }
 
     private fun setTransparentStatusBar(transparentStatusBar: Boolean) {
 
-        if (transparentStatusBar) window.decorView.systemUiVisibility =
-            View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        if (transparentStatusBar) {
+            window.decorView.systemUiVisibility =
+                View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+        }
 
     }
 }

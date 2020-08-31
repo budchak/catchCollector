@@ -18,4 +18,8 @@
         android:id="@+id/searchDialog"
         android:name="com.yaroshevich.catchcollector.ui.dialog.SearchDialog"
         android:label="SearchDialog" />
+    <fragment
+        android:id="@+id/trophyDescriptionFragment"
+        android:name="com.yaroshevich.catchcollector.ui.fragments.TrophyDescriptionFragment"
+        android:label="TrophyDescriptionFragment" />
 </navigation>

@@ -12,6 +12,7 @@ import com.yaroshevich.catchcollector.NavigationActivity
 import com.yaroshevich.catchcollector.model.DatabaseInitData
 import com.yaroshevich.catchcollector.room.TrophyDatabase
 import com.yaroshevich.catchcollector.viewModels.ToolbarSettingViewModel
+import com.yaroshevich.catchcollector.viewModels.TrophyParameterViewModel
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -33,9 +34,8 @@ class AppModule(val context: Context) {
     @Provides
     fun provideDatabaseInitData(database: TrophyDatabase): DatabaseInitData = DatabaseInitData(database)
 
+
     @Singleton
     @Provides
-    fun provideToolbarSettingViewModel(): ToolbarSettingViewModel {
-        return ToolbarSettingViewModel()
-    }
+    fun provideTrophyParameterViewModel(): TrophyParameterViewModel = TrophyParameterViewModel()
 }

@@ -105,13 +105,13 @@ class DatabaseInitData(val database: TrophyDatabase) {
 
     private fun initTrophy(){
         trophyList.apply {
-            add(TrophyEntity(1, 100,200,1))
-            add(TrophyEntity(2, 120,200,1))
-            add(TrophyEntity(3, 130,200,1))
-            add(TrophyEntity(4, 140,200,1))
-            add(TrophyEntity(5, 150,200,3))
-            add(TrophyEntity(6, 160,200,3))
-            add(TrophyEntity(7, 170,200,2))
+            add(TrophyEntity(1, 100,200,1, 1,1))
+            add(TrophyEntity(2, 120,200,1, 1,1))
+            add(TrophyEntity(3, 130,200,1, 1,1))
+            add(TrophyEntity(4, 140,200,1, 1,1))
+            add(TrophyEntity(5, 150,200,1, 1,1))
+            add(TrophyEntity(6, 160,200,1, 1,1))
+            add(TrophyEntity(7, 170,200,1, 1,1))
         }
 
         GlobalScope.launch {

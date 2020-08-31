@@ -9,12 +9,9 @@ class Country(var id: Int = 0, var name: String, var iconPath: String) {
 
         if (this === other) return true
 
-        if (!(other is Country)) return false
+        if (other !is Country) return false
 
-        return name.equals(other.name)
-
-
-
+        return name == other.name
 
     }
 }

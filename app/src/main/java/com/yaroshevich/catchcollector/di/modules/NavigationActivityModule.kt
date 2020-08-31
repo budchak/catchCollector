@@ -5,10 +5,12 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import com.yaroshevich.catchcollector.NavigationActivity
 import com.yaroshevich.catchcollector.R
+import com.yaroshevich.catchcollector.di.spore.ActivitySpore
 import com.yaroshevich.catchcollector.viewModels.ToolbarSettingViewModel
 import dagger.Module
 import dagger.Provides
 import javax.inject.Named
+import javax.inject.Singleton
 
 @Module
 class NavigationActivityModule(val navigationActivity: NavigationActivity) {
@@ -25,6 +27,10 @@ class NavigationActivityModule(val navigationActivity: NavigationActivity) {
         return Navigation.findNavController(navigationActivity, R.id.fragment);
     }
 
-
+    @ActivitySpore
+    @Provides
+    fun provideToolbarSettingViewModel(): ToolbarSettingViewModel {
+        return ToolbarSettingViewModel()
+    }
 
 }

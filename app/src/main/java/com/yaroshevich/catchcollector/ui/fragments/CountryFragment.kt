@@ -19,7 +19,7 @@ class CountryFragment : RecyclerViewFragment(){
 
         App.getInstance().initCountryFragmentComponent().inject(this)
 
-        binding?.setVariable(BR.recyclerViewModel, countryViewModel.getRecyclerModel())
+        binding.setVariable(BR.recyclerViewModel, countryViewModel.getRecyclerModel())
 
 
     }

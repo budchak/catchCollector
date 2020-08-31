@@ -14,6 +14,7 @@ import com.yaroshevich.catchcollector.model.recyclerModels.CountryRecyclerViewMo
 class CountryViewModel(
     var context: Context,
     var navController: NavController,
+    var trophyParameterViewModel: TrophyParameterViewModel,
     var toolbarSettingViewModel: ToolbarSettingViewModel
 ) : ViewModel, ItemClickListener {
 
@@ -26,9 +27,9 @@ class CountryViewModel(
 
     override fun onClick(id: Int) {
 
-        val bundle = Bundle()
-        bundle.putInt(COUNTY_TAG, id)
-        navController.navigate(R.id.fishFragment, bundle)
+        trophyParameterViewModel.countryId.postValue(id)
+
+        navController.navigate(R.id.fishFragment)
 
     }
 

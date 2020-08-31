@@ -18,6 +18,9 @@ interface TrophyDao {
     @Query("SELECT * FROM trophy WHERE fishId = :fishId ORDER BY length DESC")
     suspend fun getBest(fishId: Int): TrophyEntity?
 
+    @Query("SELECT * FROM trophy WHERE fishId = :fishId AND countryId = :countryId ORDER BY length DESC")
+    suspend fun getBest(fishId: Int, countryId: Int): TrophyEntity?
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(trophyEntity: TrophyEntity)
 

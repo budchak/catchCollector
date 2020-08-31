@@ -1,3 +1,3 @@
 package com.yaroshevich.catchcollector.model
 
-class Trophy(var id: Int, var length: Int, var weight: Int, var fishId: Int)
+class Trophy(var id: Int, var length: Int, var weight: Int, var fishId: Int, var imagePath: List<String>? = null)
