@@ -32,17 +32,22 @@ class TrophyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
         initView(view)
     }
 
 
     private fun initView(view: View) {
         view.apply {
-            country_container.setOnClickListener {
+            kind_container.setOnClickListener {
                 navController.navigate(R.id.searchDialog)
+            }
+
+            date_container.setOnClickListener {
+                navController.navigate(R.id.datePickerBottomSheetDialog)
+            }
+
+            time_container.setOnClickListener {
+                navController.navigate(R.id.timePickerBottomSheetDialog )
             }
         }
     }

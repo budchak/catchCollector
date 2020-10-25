@@ -20,7 +20,7 @@ open class RecyclerViewFragment : Fragment() {
     ): View? {
 
         binding =
-            DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view, container, false)
+            DataBindingUtil.inflate(inflater, R.layout.fragment_recycler_view_binding, container, false)
         binding.lifecycleOwner = this
         return binding.root
     }

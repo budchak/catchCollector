@@ -5,7 +5,7 @@ import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import com.yaroshevich.catchcollector.model.Country
-import com.yaroshevich.catchcollector.repository.CountryRepository
+import com.yaroshevich.catchcollector.model.repository.CountryRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 

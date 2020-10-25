@@ -12,7 +12,4 @@ class TrophyViewModel {
 
     var liveTrophy = MutableLiveData<List<Trophy>>()
 
-
-
-
 }

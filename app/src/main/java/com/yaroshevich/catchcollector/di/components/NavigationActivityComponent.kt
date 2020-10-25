@@ -1,10 +1,7 @@
 package com.yaroshevich.catchcollector.di.components
 
 import com.yaroshevich.catchcollector.NavigationActivity
-import com.yaroshevich.catchcollector.di.modules.CountryFragmentModule
-import com.yaroshevich.catchcollector.di.modules.FishFragmentModule
-import com.yaroshevich.catchcollector.di.modules.NavigationActivityModule
-import com.yaroshevich.catchcollector.di.modules.TrophyModule
+import com.yaroshevich.catchcollector.di.modules.*
 import com.yaroshevich.catchcollector.di.spore.ActivitySpore
 import dagger.Subcomponent
 
@@ -16,4 +13,5 @@ interface NavigationActivityComponent {
     fun plus(countryFragmentModule: CountryFragmentModule): CountryFragmentComponent
     fun plus(fishFragmentModule: FishFragmentModule): FishFragmentComponent
     fun plus(trophyModule: TrophyModule): TrophyComponent
+    fun plus(appFunctionModule: AppFunctionFragmentModule): AppFunctionFragmentComponent
 }

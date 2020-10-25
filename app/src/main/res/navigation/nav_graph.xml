@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/countryFragment">
+    app:startDestination="@id/appFunctionFragment">
     <fragment
         android:id="@+id/countryFragment"
         android:name="com.yaroshevich.catchcollector.ui.fragments.CountryFragment"
@@ -22,4 +22,16 @@
         android:id="@+id/trophyDescriptionFragment"
         android:name="com.yaroshevich.catchcollector.ui.fragments.TrophyDescriptionFragment"
         android:label="TrophyDescriptionFragment" />
+    <dialog
+        android:id="@+id/datePickerBottomSheetDialog"
+        android:name="com.yaroshevich.catchcollector.ui.dialog.DatePickerBottomSheetDialog"
+        android:label="DatePickerBottomSheetDialog" />
+    <dialog
+        android:id="@+id/timePickerBottomSheetDialog"
+        android:name="com.yaroshevich.catchcollector.ui.dialog.TimePickerBottomSheetDialog"
+        android:label="TimePickerBottomSheetDialog" />
+    <fragment
+        android:id="@+id/appFunctionFragment"
+        android:name="com.yaroshevich.catchcollector.ui.fragments.AppFunctionFragment"
+        android:label="AppFunctionFragment" />
 </navigation>

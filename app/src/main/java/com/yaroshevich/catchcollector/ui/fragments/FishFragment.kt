@@ -10,7 +10,7 @@ import com.yaroshevich.catchcollector.viewModels.CountryViewModel
 import com.yaroshevich.catchcollector.viewModels.FishViewModel
 import javax.inject.Inject
 
-class FishFragment : RecyclerViewFragment() {
+class   FishFragment : RecyclerViewFragment() {
 
     @Inject
     lateinit var fishViewModel: FishViewModel

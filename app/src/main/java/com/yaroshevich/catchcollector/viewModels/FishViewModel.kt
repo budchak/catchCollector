@@ -8,10 +8,9 @@ import androidx.navigation.NavController
 import com.yaroshevich.catchcollector.R
 import com.yaroshevich.catchcollector.interfaces.ItemClickListener
 import com.yaroshevich.catchcollector.model.Country
-import com.yaroshevich.catchcollector.model.Fish
 import com.yaroshevich.catchcollector.model.recyclerModels.FishRecyclerViewModel
-import com.yaroshevich.catchcollector.repository.CatchInCountryRepository
-import com.yaroshevich.catchcollector.repository.CountryRepository
+import com.yaroshevich.catchcollector.model.repository.CountryRepository
+import com.yaroshevich.catchcollector.model.repository.TrophyPreviewRepository
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -24,7 +23,7 @@ class FishViewModel(
     ItemClickListener {
 
 
-    val trophy = MutableLiveData<List<Fish>>()
+    val trophy = MutableLiveData<List<ItemTrophyPreviewViewModel>>()
 
     var country = MutableLiveData<Country?>(null)
 
@@ -65,11 +64,18 @@ class FishViewModel(
     }
 
 
-    suspend fun loadTrophy(countryID: Int) {
+    private suspend fun loadTrophy(countryID: Int) {
 
-        val fishes = CatchInCountryRepository().getAllById(id = countryID)
+        val fishes = TrophyPreviewRepository().getAll(countryID)
 
-        trophy.postValue(fishes)
+        val result = mutableListOf<ItemTrophyPreviewViewModel>()
+
+        fishes.forEach {
+
+            result.add(ItemTrophyPreviewViewModel(it, navController, trophyParameterViewModel))
+        }
+
+        trophy.postValue(result)
     }
 
     override fun onClick(id: Int) {

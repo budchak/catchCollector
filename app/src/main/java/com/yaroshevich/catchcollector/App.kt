@@ -4,7 +4,7 @@ import android.app.Application
 import com.yaroshevich.catchcollector.di.components.*
 import com.yaroshevich.catchcollector.di.modules.*
 import com.yaroshevich.catchcollector.model.DatabaseInitData
-import com.yaroshevich.catchcollector.room.TrophyDatabase
+import com.yaroshevich.catchcollector.model.room.TrophyDatabase
 import javax.inject.Inject
 
 class App : Application() {
@@ -54,6 +54,11 @@ class App : Application() {
     fun initTrophyComponent(): TrophyComponent {
         trophyComponent = navigationActivityComponent.plus(TrophyModule())
         return trophyComponent
+    }
+
+    fun initAppFunctionComponent(): AppFunctionFragmentComponent {
+        return navigationActivityComponent.plus(AppFunctionFragmentModule())
+
     }
 
     companion object {

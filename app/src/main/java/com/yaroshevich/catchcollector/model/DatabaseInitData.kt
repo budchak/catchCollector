@@ -1,10 +1,7 @@
 package com.yaroshevich.catchcollector.model
 
-import com.yaroshevich.catchcollector.room.TrophyDatabase
-import com.yaroshevich.catchcollector.room.entities.CountryEntity
-import com.yaroshevich.catchcollector.room.entities.FishCountryEntity
-import com.yaroshevich.catchcollector.room.entities.FishEntity
-import com.yaroshevich.catchcollector.room.entities.TrophyEntity
+import com.yaroshevich.catchcollector.model.room.TrophyDatabase
+import com.yaroshevich.catchcollector.model.room.entities.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
@@ -19,11 +16,31 @@ class DatabaseInitData(val database: TrophyDatabase) {
 
     val trophyList = mutableListOf<TrophyEntity>()
 
+    val trophyImage = mutableListOf<TrophyImagePathEntity>()
+
     fun initData() {
         initCountryList()
         initFish()
         initFishCountry()
         initTrophy()
+        initTrophyImage()
+    }
+
+    fun initTrophyImage() {
+        trophyImage.apply {
+            add(TrophyImagePathEntity(1, "/images/country/title_country_belarus.png", 1))
+            add(TrophyImagePathEntity(2, "/images/country/title_country_belarus.png", 2))
+            add(TrophyImagePathEntity(3, "/images/country/title_country_belarus.png", 3))
+            add(TrophyImagePathEntity(4, "/images/country/title_country_belarus.png", 4))
+            add(TrophyImagePathEntity(5, "/images/country/title_country_belarus.png", 5))
+            add(TrophyImagePathEntity(6, "/images/carp.jpg", 7))
+
+            GlobalScope.launch {
+
+                database.trophyImagePathDao().insert(trophyImage)
+
+            }
+        }
     }
 
     private fun initCountryList() {
@@ -68,12 +85,12 @@ class DatabaseInitData(val database: TrophyDatabase) {
 
     private fun initFish() {
         fishList.apply {
-            add(FishEntity(1, "Карп", "1"))
-            add(FishEntity(2, "Карась", "1"))
-            add(FishEntity(3, "Карась серебрянный", "1"))
-            add(FishEntity(4, "Плотва", "1"))
-            add(FishEntity(5, "Налим", "1"))
-            add(FishEntity(6, "Сельдь", "2"))
+            add(FishEntity(1, "Карп", "1", "/images/fish/grass_carp.png"))
+            add(FishEntity(2, "Карась", "1", "/images/fish/grass_carp.png"))
+            add(FishEntity(3, "Карась серебрянный", "1", "/images/fish/grass_carp.png"))
+            add(FishEntity(4, "Плотва", "1", "/images/fish/grass_carp.png"))
+            add(FishEntity(5, "Налим", "1", "/images/fish/grass_carp.png"))
+            add(FishEntity(6, "Сельдь", "2", "/images/fish/grass_carp.png"))
         }
 
         GlobalScope.launch {
@@ -103,15 +120,15 @@ class DatabaseInitData(val database: TrophyDatabase) {
         }
     }
 
-    private fun initTrophy(){
+    private fun initTrophy() {
         trophyList.apply {
-            add(TrophyEntity(1, 100,200,1, 1,1))
-            add(TrophyEntity(2, 120,200,1, 1,1))
-            add(TrophyEntity(3, 130,200,1, 1,1))
-            add(TrophyEntity(4, 140,200,1, 1,1))
-            add(TrophyEntity(5, 150,200,1, 1,1))
-            add(TrophyEntity(6, 160,200,1, 1,1))
-            add(TrophyEntity(7, 170,200,1, 1,1))
+            add(TrophyEntity(1, 100, 200, 1, 1, 1))
+            add(TrophyEntity(2, 120, 200, 1, 1, 1))
+            add(TrophyEntity(3, 130, 200, 1, 1, 1))
+            add(TrophyEntity(4, 140, 200, 1, 1, 1))
+            add(TrophyEntity(5, 150, 200, 1, 1, 1))
+            add(TrophyEntity(6, 160, 200, 1, 1, 1))
+            add(TrophyEntity(7, 170, 200, 1, 1, 1))
         }
 
         GlobalScope.launch {
